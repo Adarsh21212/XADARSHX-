@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XADARSHX </title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #1d3557, #457b9d);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff9f1c, 0 0 20px #ff9f1c, 0 0 30px #ff9f1c;
+            }
+            to {
+                text-shadow: 0 0 20px #ffbf69, 0 0 40px #ffbf69, 0 0 50px #ffbf69;
+            }
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .input-field, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1em;
+        }
+        .button {
+            background: #ff9f1c;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .button:hover {
+            background: #ffbf69;
+        }
+        .link {
+            display: block;
+            margin-top: 20px;
+            color: #a8dadc;
+            text-decoration: none;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .run-text {
+            font-size: 0.9em;
+            margin-top: 20px;
+            color: #ff9f1c;
+            animation: scroll 10s linear infinite;
+        }
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .linear-indicator {
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #ff9f1c 50%, #1d3557 50%);
+            margin-top: 20px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .indicator-fill {
+            height: 100%;
+            background: #ffbf69;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="container" id="loginPage">
+        <h1>XADARSHX </h1>
+        <input type="password" class="input-field" placeholder="Enter Password" id="password" />
+        <button class="button" onclick="checkPassword()">Login</button>
+        <a href="https://t.me/xadarshxmod" target="_blank" class="link">Join Telegram Channel</a>
+    </div>
+
+    <!-- Prediction Page -->
+    <div class="container" id="predictionPage" style="display: none;">
+        <h1>XADARSHX</h1>
+        <select id="gameSelector" class="input-field">
+            <option value="">Select Game</option>
+            <option value="51 Game">51 GAME</option>
+            <option value="BDG WIN">BDG WIN</option>
+            <option value="91 CLUB">91 CLUB</option>
+            <option value="GOA GAME">GOA GAME</option>
+            <option value="BIG KOLKATA">BIG KOLKATA</option>
+            <option value="DM WIN">DM WIN</option>
+            <option value="DIU WIN">DIU WIN</option>
+            <option value="SIKKIM">SIKKIM</option>
+            <option value="82 LOTTERY">82 LOTTERY</option>
+            <option value="TIRANGA">TIRANGA</option>
+            <option value="TC LOTTERY">TC LOTTERY</option>
+            <option value="IN999">IN999</option>
+            <option value="BIG MUMBAI">BIG MUMBAI</option>
+        </select>
+        <input type="number" class="input-field" id="predictionInput" placeholder="Enter 3 Digits" min="3" max="3" />
+        <button class="button" onclick="makePrediction()">RESULT</button>
+        <div class="linear-indicator">
+            <div class="indicator-fill" id="indicatorFill" style="width: 0;"></div>
+        </div>
+        <p class="result" id="resultText"></p>
+        <p class="run-text">MADE BY XADARSHX</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === 'XADARSHX') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('predictionPage').style.display = 'block';
+            } else {
+                alert('Incorrect Password!');
+            }
+        }
+
+        function makePrediction() {
+            const input = document.getElementById('predictionInput').value;
+            const game = document.getElementById('gameSelector').value;
+            const resultText = document.getElementById('resultText');
+            const indicatorFill = document.getElementById('indicatorFill');
+
+            if (!game) {
+                alert('Please select a game!');
+                return;
+            }
+            if (input.length === 3 && !isNaN(input)) {
+                const prediction = Math.random() > 0.5 ? 'BIG' : 'SMALL';
+                resultText.textContent = ` ${game}: ${prediction}`;
+                indicatorFill.style.width = prediction === 'BIG' ? '100%' : '0%';
+            } else {
+                alert('Please enter a valid 3-digit number.');
+            }
+        }
+    </script>
+</body>
+</html>
